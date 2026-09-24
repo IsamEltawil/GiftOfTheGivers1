@@ -1,0 +1,100 @@
+﻿@page
+@{
+    ViewData["Title"] = "Make a Donation";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow rounded-4 overflow-hidden">
+                <div class="bg-gotg-green text-white p-4">
+                    <h3 class="fw-bold mb-1"><i class="bi bi-gift-fill text-warning me-2"></i>Humanitarian Relief Donation</h3>
+                    <p class="small text-light opacity-75 mb-0">All donations qualify for a South African Section 18A tax certificate.</p>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <div class="alert alert-light border d-flex align-items-center justify-content-between mb-4">
+                        <div>
+                            <strong>Guest Donor Mode</strong>
+                            <div class="small text-muted">You can donate anonymously or <a href="/Account/Login" class="text-gotg-green fw-bold">Sign In</a> to link to your account.</div>
+                        </div>
+                        <span class="badge bg-secondary">Guest</span>
+                    </div>
+
+                    <form action="/Certificate" method="get">
+                        <!-- Frequency Options -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Donation Type</label>
+                            <div class="d-flex gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Frequency" id="f1" checked />
+                                    <label class="form-check-label" for="f1">One-Time</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Frequency" id="f2" />
+                                    <label class="form-check-label" for="f2">Monthly Recurring</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Frequency" id="f3" />
+                                    <label class="form-check-label" for="f3">Annually</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Currency & Amount -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Currency</label>
+                                <select class="form-select">
+                                    <option value="ZAR" selected>ZAR (R - South Africa)</option>
+                                    <option value="USD">USD ($ - International)</option>
+                                    <option value="EUR">EUR (€ - Europe)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label fw-bold">Donation Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
+                                    <input type="number" class="form-control" value="250" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Relief Project Target -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Select Programme</label>
+                            <select class="form-select">
+                                <option>General Disaster Relief Fund</option>
+                                <option>Water Provision & Borehole Drilling</option>
+                                <option>Medical Consumables & Healthcare Support</option>
+                                <option>Hunger Alleviation & Food Distribution</option>
+                            </select>
+                        </div>
+
+                        <!-- Tax Certificate Details -->
+                        <h5 class="fw-bold text-gotg-green mt-4 mb-3 border-bottom pb-2">Tax Certificate Information</h5>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Donor / Company Name</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Email Address</label>
+                                <input type="email" class="form-control" placeholder="donor@example.com" required />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Tax / ID Number (Optional)</label>
+                            <input type="text" class="form-control" placeholder="SARS Tax No / ID Number" />
+                        </div>
+
+                        <button type="submit" class="btn btn-gotg-gold btn-lg w-100 py-3 shadow">
+                            <i class="bi bi-check2-circle me-2"></i> Process Donation & View Tax Certificate
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

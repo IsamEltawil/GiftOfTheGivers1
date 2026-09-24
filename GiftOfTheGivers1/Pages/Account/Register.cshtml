@@ -1,0 +1,47 @@
+﻿@page
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden">
+                <div class="bg-gotg-green text-white p-4 text-center">
+                    <h3 class="fw-bold mb-1"><i class="bi bi-person-plus text-warning me-2"></i>Create Account</h3>
+                    <p class="small text-light opacity-75 mb-0">Join our donor and relief network</p>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form action="/Index" method="get">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Full Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address</label>
+                            <input type="email" class="form-control" placeholder="name@example.com" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Account Role</label>
+                            <select class="form-select">
+                                <option>Donor (Track Contributions & Certificates)</option>
+                                <option>Employee (Field Coordination & Projects)</option>
+                            </select>
+                        </div>
+                        <div class="row g-2 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Password</label>
+                                <input type="password" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Confirm Password</label>
+                                <input type="password" class="form-control" required />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-gotg-gold btn-lg w-100 shadow-sm">Complete Registration</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

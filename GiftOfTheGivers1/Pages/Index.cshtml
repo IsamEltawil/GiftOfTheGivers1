@@ -1,0 +1,101 @@
+﻿@page
+@{
+    ViewData["Title"] = "Disaster Relief & Humanitarian Response";
+}
+
+<!-- Hero Banner -->
+<div class="bg-gotg-green text-white py-5 shadow-sm">
+    <div class="container py-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark px-3 py-2 fw-semibold mb-3">Live Emergency Response</span>
+                <h1 class="display-4 fw-bold mb-3">Bringing Hope, Restoring Dignity.</h1>
+                <p class="lead mb-4 text-light opacity-90">
+                    Supporting search & rescue, drought intervention, disaster feeding schemes, and medical care across South Africa and beyond.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="/Donate" class="btn btn-gotg-gold btn-lg px-4 shadow">
+                        <i class="bi bi-shield-heart-fill me-2"></i> Make a Donation
+                    </a>
+                    <a href="/Volunteer" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-person-plus-fill me-2"></i> Register as Volunteer
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow bg-white text-dark p-4 rounded-4">
+                    <h5 class="fw-bold text-gotg-green mb-3"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Impact Calculator</h5>
+                    <div class="p-3 bg-light rounded-3 mb-2 border">
+                        <span class="small text-muted d-block">ZAR 250</span>
+                        <strong>1 x Family Emergency Food Hamper (1 Month)</strong>
+                    </div>
+                    <div class="p-3 bg-light rounded-3 mb-3 border">
+                        <span class="small text-muted d-block">ZAR 1,000</span>
+                        <strong>10,000 Litres Clean Water Delivery</strong>
+                    </div>
+                    <a href="/Donate" class="btn btn-gotg-green w-100 py-2">Donate & Get Section 18A Tax Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ongoing Projects Feed -->
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-dark mb-0">Active Humanitarian Updates</h3>
+            <p class="text-muted small mb-0">Live situation reports filed by field coordinators</p>
+        </div>
+        <a href="/Employee/CreateUpdate" class="btn btn-sm btn-gotg-green">
+            <i class="bi bi-plus-circle me-1"></i> Post New Update
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1">Active Deployment</span>
+                        <small class="text-muted"><i class="bi bi-clock me-1"></i>Today</small>
+                    </div>
+                    <h5 class="card-title fw-bold text-dark">KZN Coastal Flood Relief</h5>
+                    <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Durban, KwaZulu-Natal</p>
+                    <p class="card-text text-secondary">Delivering hygiene packs, emergency blankets, and clean drinking water to over 500 displaced residents.</p>
+                </div>
+                <div class="card-footer bg-light border-0 py-2 small text-muted">Field Officer: coordinator@gotg.org</div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge bg-warning bg-opacity-10 text-warning text-dark border border-warning px-2 py-1">Ongoing Relief</span>
+                        <small class="text-muted"><i class="bi bi-clock me-1"></i>Yesterday</small>
+                    </div>
+                    <h5 class="card-title fw-bold text-dark">Drought Borehole Project</h5>
+                    <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Graaff-Reinet, Eastern Cape</p>
+                    <p class="card-text text-secondary">Hydro-geologists successfully drilled two deep aquifer boreholes supplying provincial hospitals and surrounding clinics.</p>
+                </div>
+                <div class="card-footer bg-light border-0 py-2 small text-muted">Field Officer: waterteam@gotg.org</div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge bg-danger bg-opacity-10 text-danger border border-danger px-2 py-1">Urgent Response</span>
+                        <small class="text-muted"><i class="bi bi-clock me-1"></i>2 Days Ago</small>
+                    </div>
+                    <h5 class="card-title fw-bold text-dark">Hospital Medical Consumables</h5>
+                    <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Johannesburg, Gauteng</p>
+                    <p class="card-text text-secondary">Immediate dispatch of surgical consumables, IV fluids, and trauma packs to regional healthcare facilities.</p>
+                </div>
+                <div class="card-footer bg-light border-0 py-2 small text-muted">Field Officer: medical@gotg.org</div>
+            </div>
+        </div>
+    </div>
+</div>

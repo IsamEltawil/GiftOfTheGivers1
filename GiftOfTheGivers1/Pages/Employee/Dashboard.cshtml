@@ -1,0 +1,163 @@
+﻿@page
+@{
+    ViewData["Title"] = "Employee Operations Portal";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-gotg-green mb-0"><i class="bi bi-speedometer2 me-2"></i>Relief Coordination Portal</h2>
+            <p class="text-muted small">Manage live field updates, volunteer deployments, and donation records.</p>
+        </div>
+        <a href="/Employee/CreateUpdate" class="btn btn-gotg-gold shadow-sm">
+            <i class="bi bi-plus-lg me-1"></i> Post Relief Update
+        </a>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-pills mb-4" id="portalTabs" role="tablist">
+        <li class="nav-item">
+            <button class="nav-link active fw-semibold" data-bs-toggle="pill" data-bs-target="#tab-volunteers">
+                <i class="bi bi-people-fill me-1"></i> Volunteer Sign-ups (3)
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link fw-semibold" data-bs-toggle="pill" data-bs-target="#tab-updates">
+                <i class="bi bi-megaphone-fill me-1"></i> Project Updates (3)
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link fw-semibold" data-bs-toggle="pill" data-bs-target="#tab-donations">
+                <i class="bi bi-cash-stack me-1"></i> Logged Donations (3)
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Volunteers Tab -->
+        <div class="tab-pane fade show active" id="tab-volunteers">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email / Contact</th>
+                                <th>Skill Category</th>
+                                <th>Availability</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Dr. Sipho Ndlovu</td>
+                                <td><div>sipho@health.za</div><small class="text-muted">+27 82 456 7890</small></td>
+                                <td><span class="badge bg-secondary">Medical & Healthcare</span></td>
+                                <td><span class="badge bg-info text-dark">Rapid Emergency</span></td>
+                                <td>KwaZulu-Natal</td>
+                                <td><span class="badge bg-success">Ready for Dispatch</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Sarah Jenkins</td>
+                                <td><div>sarah.j@gmail.com</div><small class="text-muted">+27 71 234 5678</small></td>
+                                <td><span class="badge bg-secondary">Logistics & Heavy Transport</span></td>
+                                <td><span class="badge bg-info text-dark">Weekends Only</span></td>
+                                <td>Western Cape</td>
+                                <td><span class="badge bg-warning text-dark">Pending Review</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Kagiso Molefe</td>
+                                <td><div>kagiso@water.org</div><small class="text-muted">+27 83 987 6543</small></td>
+                                <td><span class="badge bg-secondary">Water & Engineering</span></td>
+                                <td><span class="badge bg-info text-dark">Full-Time</span></td>
+                                <td>Limpopo</td>
+                                <td><span class="badge bg-success">Ready for Dispatch</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Updates Tab -->
+        <div class="tab-pane fade" id="tab-updates">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Project Title</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Field Coordinator</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">KZN Coastal Flood Relief</td>
+                                <td>Durban, KZN</td>
+                                <td><span class="badge bg-success">Active Deployment</span></td>
+                                <td>coordinator@gotg.org</td>
+                                <td><a href="/Index" class="btn btn-sm btn-outline-secondary">View on Feed</a></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Drought Borehole Project</td>
+                                <td>Graaff-Reinet, EC</td>
+                                <td><span class="badge bg-warning text-dark">Ongoing Relief</span></td>
+                                <td>waterteam@gotg.org</td>
+                                <td><a href="/Index" class="btn btn-sm btn-outline-secondary">View on Feed</a></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Hospital Medical Consumables</td>
+                                <td>Johannesburg, GP</td>
+                                <td><span class="badge bg-danger">Urgent Response</span></td>
+                                <td>medical@gotg.org</td>
+                                <td><a href="/Index" class="btn btn-sm btn-outline-secondary">View on Feed</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donations Tab -->
+        <div class="tab-pane fade" id="tab-donations">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Receipt No</th>
+                                <th>Donor</th>
+                                <th>Project</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Certificate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>GOTG-18A-77492B</code></td>
+                                <td><div>Anglo American Fund</div><small class="text-muted">Corporate Donor</small></td>
+                                <td>Water Provision</td>
+                                <td><span class="badge bg-light text-dark border">One-Time</span></td>
+                                <td class="fw-bold text-gotg-green">ZAR 50,000.00</td>
+                                <td><a href="/Certificate" class="btn btn-sm btn-outline-primary" target="_blank">View 18A</a></td>
+                            </tr>
+                            <tr>
+                                <td><code>GOTG-18A-33190A</code></td>
+                                <td><div>Anonymous</div><small class="text-muted">Guest</small></td>
+                                <td>Food Security</td>
+                                <td><span class="badge bg-light text-dark border">Monthly</span></td>
+                                <td class="fw-bold text-gotg-green">ZAR 500.00</td>
+                                <td><a href="/Certificate" class="btn btn-sm btn-outline-primary" target="_blank">View 18A</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

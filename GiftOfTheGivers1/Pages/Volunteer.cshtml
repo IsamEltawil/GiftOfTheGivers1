@@ -1,0 +1,70 @@
+﻿@page
+@{
+    ViewData["Title"] = "Volunteer Registration";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow rounded-4 overflow-hidden">
+                <div class="bg-gotg-green text-white p-4">
+                    <h3 class="fw-bold mb-1"><i class="bi bi-person-fill-add text-warning me-2"></i>Join Volunteer Corps</h3>
+                    <p class="small text-light opacity-75 mb-0">Register your skills to support disaster and relief missions.</p>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <form action="/Index" method="get">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Full Name</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Email Address</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required />
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Contact Number</label>
+                                <input type="tel" class="form-control" placeholder="+27 82 000 0000" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Location / Province</label>
+                                <input type="text" class="form-control" placeholder="e.g. Limpopo, Gauteng" required />
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Skill Set / Category</label>
+                                <select class="form-select">
+                                    <option>Medical & Healthcare (Doctor / Nurse / EMT)</option>
+                                    <option>Search and Rescue</option>
+                                    <option>Logistics & Transport</option>
+                                    <option>Food & Supply Distribution</option>
+                                    <option>Water & Borehole Engineering</option>
+                                    <option>General Volunteer Support</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Availability</label>
+                                <select class="form-select">
+                                    <option>Rapid Emergency (24h Notice)</option>
+                                    <option>Weekends Only</option>
+                                    <option>Full-Time Availability</option>
+                                    <option>Remote / Administrative</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-gotg-green btn-lg w-100 py-3 shadow">
+                            <i class="bi bi-send-fill me-1"></i> Submit Volunteer Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
