@@ -102,7 +102,7 @@ Commit messages should say what changed, e.g. `Add unit tests for donation amoun
 |---|---|
 | Isam Eltawil | IsamEltawil |
 | Matsobane Junior Lethabo Boshomane | Matsobane2004 |
-| Mahlaste Mphelo | MahlasteLucky |
+| Mahlaste Mphelo | Mahlastelucky |
 
 ## Acknowledgements
 
