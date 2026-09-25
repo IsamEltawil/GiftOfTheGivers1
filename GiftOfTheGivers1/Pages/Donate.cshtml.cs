@@ -65,6 +65,13 @@ namespace GiftOfTheGivers1.Pages
                 (resultJson);
             var certificateNumber = result.GetProperty("certificateNumber").GetString();
 
+            TempData["DonorName"] = result.GetProperty("donorName").GetString();
+            TempData["Amount"] = result.GetProperty("amount").GetDecimal().ToString();
+            TempData["Currency"] = result.GetProperty("currency").GetString();
+            TempData["DonationType"] = result.GetProperty("donationType").GetString();
+            TempData["IssuedOn"] = result.GetProperty("issuedOn").GetDateTime().ToString("d MMMM yyyy");
+            TempData["Summary"] = result.GetProperty("summary").GetString();
+
             return RedirectToPage("/Certificate", new { certNumber = certificateNumber });
         }
     }

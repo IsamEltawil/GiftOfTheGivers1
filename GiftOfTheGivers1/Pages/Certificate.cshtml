@@ -1,4 +1,5 @@
 ﻿@page
+@model GiftOfTheGivers1.Pages.CertificateModel
 @{
     ViewData["Title"] = "Section 18A Tax Certificate";
 }
@@ -22,22 +23,19 @@
                 <p class="small text-muted mb-0">PBO Registration No: 930018993 | NPO Reg: 028-877</p>
             </div>
             <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-                <span class="badge bg-light text-dark border p-2 font-monospace fs-6">GOTG-18A-77492B</span>
-                <div class="small text-muted mt-1">Date: 28 August 2026</div>
+                <span class="badge bg-light text-dark border p-2 font-monospace fs-6">@Model.CertNumber</span>
+                <div class="small text-muted mt-1">Date: @Model.IssuedOn</div>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="col-md-6">
                 <h6 class="text-uppercase text-muted small fw-bold">Donor Details</h6>
-                <p class="fs-5 fw-bold mb-1">Valued Donor (Individual / Corporate)</p>
-                <p class="mb-1 text-muted">Email: donor@example.com</p>
-                <p class="mb-0 text-muted">Tax / ID No: SARS-98218841</p>
+                <p class="fs-5 fw-bold mb-1">@Model.DonorName</p>
             </div>
             <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                <h6 class="text-uppercase text-muted small fw-bold">Allocated Programme</h6>
-                <p class="fs-5 fw-bold text-gotg-green mb-1">General Disaster Relief Fund</p>
-                <p class="mb-0 text-muted">Donation Schedule: One-Time</p>
+                <h6 class="text-uppercase text-muted small fw-bold">Donation Schedule</h6>
+                <p class="fs-5 fw-bold text-gotg-green mb-1">@Model.DonationType</p>
             </div>
         </div>
 
@@ -54,14 +52,14 @@
                 <tr>
                     <td>Humanitarian Emergency Disaster Response</td>
                     <td>Electronic Funds Transfer (Prototype)</td>
-                    <td>One-Time</td>
-                    <td class="text-end fw-bold fs-5 text-gotg-green">ZAR 250.00</td>
+                    <td>@Model.DonationType</td>
+                    <td class="text-end fw-bold fs-5 text-gotg-green">@Model.Currency @Model.Amount</td>
                 </tr>
             </tbody>
         </table>
 
         <div class="p-3 bg-light rounded small text-muted my-3 border">
-            <em>Certification:</em> Gift of the Givers Foundation hereby confirms receipt of the donation detailed above. This receipt is issued in terms of Section 18A of the Income Tax Act 58 of 1962 for tax deduction purposes.
+            <em>Certification:</em> @Model.Summary
         </div>
 
         <div class="row pt-4 mt-4 border-top align-items-end">
