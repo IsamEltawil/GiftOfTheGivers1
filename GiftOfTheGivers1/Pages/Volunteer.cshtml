@@ -1,4 +1,5 @@
 ﻿@page
+@model GiftOfTheGivers1.Pages.VolunteerModel
 @{
     ViewData["Title"] = "Volunteer Registration";
 }
@@ -13,33 +14,45 @@
                 </div>
 
                 <div class="card-body p-4 p-md-5">
-                    <form action="/Index" method="get">
+                    @if (Model.Submitted)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            Thank you, @Model.FullName! Your volunteer application has been received. Our team will contact you at @Model.Email.
+                        </div>
+                    }
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <div asp-validation-summary="All"></div>
+                        </div>
+                    }
+                    <form method="post">
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Full Name</label>
-                                <input type="text" class="form-control" placeholder="John Doe" required />
+                                <input type="text" class="form-control" name="FullName" placeholder="John Doe" required />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Email Address</label>
-                                <input type="email" class="form-control" placeholder="john@example.com" required />
+                                <input type="email" class="form-control" name="Email" placeholder="john@example.com" required />
                             </div>
                         </div>
 
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Contact Number</label>
-                                <input type="tel" class="form-control" placeholder="+27 82 000 0000" required />
+                                <input type="tel" class="form-control" name="ContactNumber" placeholder="+27 82 000 0000" required />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Location / Province</label>
-                                <input type="text" class="form-control" placeholder="e.g. Limpopo, Gauteng" required />
+                                <input type="text" class="form-control" name="Location" placeholder="e.g. Limpopo, Gauteng" required />
                             </div>
                         </div>
 
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Skill Set / Category</label>
-                                <select class="form-select">
+                                <select class="form-select" name="SkillSet">
                                     <option>Medical & Healthcare (Doctor / Nurse / EMT)</option>
                                     <option>Search and Rescue</option>
                                     <option>Logistics & Transport</option>
@@ -50,7 +63,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Availability</label>
-                                <select class="form-select">
+                                <select class="form-select" name="Availability">
                                     <option>Rapid Emergency (24h Notice)</option>
                                     <option>Weekends Only</option>
                                     <option>Full-Time Availability</option>
