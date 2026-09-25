@@ -16,5 +16,5 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapRazorPages();
-
+//smilo was here
 app.Run();
