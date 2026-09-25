@@ -1,24 +1,71 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using GiftOfTheGivers.Helpers;
+using System.Text;
+using System.Text.Json;
 
 namespace GiftOfTheGivers1.Pages
 {
     public class DonateModel : PageModel
     {
-        [BindProperty]
-        public decimal DonationAmount { get; set; }
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<DonateModel>
+    _logger;
 
-        public string GeneratedCertificateNumber { get; set; }
+        public DonateModel(IHttpClientFactory httpClientFactory, IConfiguration configuration, ILogger<DonateModel>
+            logger)
+        {
+            _httpClientFactory = httpClientFactory;
+            _configuration = configuration;
+            _logger = logger;
+        }
+
+        [BindProperty]
+        public string DonorName { get; set; } = string.Empty;
+        [BindProperty]
+        public decimal Amount { get; set; }
+        [BindProperty]
+        public string Currency { get; set; } = "ZAR";
+        [BindProperty]
+        public string DonationType { get; set; } = "One-Time";
 
         public void OnGet()
         {
         }
 
-        public void OnPost()
+        public async Task<IActionResult>
+            OnPostAsync()
         {
-            int dummyDonationId = 1;
-            GeneratedCertificateNumber = DonationHelper.FormatTaxCertificateNumber(dummyDonationId, 2026);
+            var functionUrl = _configuration["DonationFunction:Url"];
+            var functionKey = _configuration["DonationFunction:Key"];
+
+            var client = _httpClientFactory.CreateClient();
+            var payload = JsonSerializer.Serialize(new
+            {
+                donorName = DonorName,
+                amount = Amount,
+                currency = Currency,
+                donationType = DonationType
+            });
+
+            var content = new StringContent(payload, Encoding.UTF8, "application/json");
+            var requestUrl = $"{functionUrl}?code={functionKey}";
+
+            var response = await client.PostAsync(requestUrl, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning("Donation function returned {StatusCode}", response.StatusCode);
+                ModelState.AddModelError(string.Empty, "We couldn't process your donation right now. Please try again.");
+                return Page();
+            }
+
+            var resultJson = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<JsonElement>
+                (resultJson);
+            var certificateNumber = result.GetProperty("certificateNumber").GetString();
+
+            return RedirectToPage("/Certificate", new { certNumber = certificateNumber });
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿@page
 @model GiftOfTheGivers1.Pages.DonateModel
-
 @{
     ViewData["Title"] = "Make a Donation";
 }
-
 
 <div class="container py-5">
     <div class="row justify-content-center">
@@ -24,22 +22,28 @@
                         <span class="badge bg-secondary">Guest</span>
                     </div>
 
-                    <form action="/Certificate" method="get">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <div asp-validation-summary="All"></div>
+                        </div>
+                    }
+
+                    <form method="post">
                         <!-- Frequency Options -->
                         <div class="mb-4">
                             <label class="form-label fw-bold">Donation Type</label>
                             <div class="d-flex gap-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Frequency" id="f1" checked />
+                                    <input class="form-check-input" type="radio" name="DonationType" id="f1" value="One-Time" checked />
                                     <label class="form-check-label" for="f1">One-Time</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Frequency" id="f2" />
-                   
+                                    <input class="form-check-input" type="radio" name="DonationType" id="f2" value="Monthly Recurring" />
                                     <label class="form-check-label" for="f2">Monthly Recurring</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="Frequency" id="f3" />
+                                    <input class="form-check-input" type="radio" name="DonationType" id="f3" value="Annually" />
                                     <label class="form-check-label" for="f3">Annually</label>
                                 </div>
                             </div>
@@ -49,7 +53,7 @@
                         <div class="row g-3 mb-4">
                             <div class="col-md-4">
                                 <label class="form-label fw-bold">Currency</label>
-                                <select class="form-select">
+                                <select class="form-select" name="Currency">
                                     <option value="ZAR" selected>ZAR (R - South Africa)</option>
                                     <option value="USD">USD ($ - International)</option>
                                     <option value="EUR">EUR (€ - Europe)</option>
@@ -59,7 +63,7 @@
                                 <label class="form-label fw-bold">Donation Amount</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
-                                    <input type="number" class="form-control" value="250" required />
+                                    <input type="number" class="form-control" name="Amount" value="250" min="1" step="0.01" required />
                                 </div>
                             </div>
                         </div>
@@ -67,11 +71,11 @@
                         <!-- Relief Project Target -->
                         <div class="mb-4">
                             <label class="form-label fw-bold">Select Programme</label>
-                            <select class="form-select">
+                            <select class="form-select" name="Programme">
                                 <option>General Disaster Relief Fund</option>
-                                <option>Water Provision & Borehole Drilling</option>
-                                <option>Medical Consumables & Healthcare Support</option>
-                                <option>Hunger Alleviation & Food Distribution</option>
+                                <option>Water Provision &amp; Borehole Drilling</option>
+                                <option>Medical Consumables &amp; Healthcare Support</option>
+                                <option>Hunger Alleviation &amp; Food Distribution</option>
                             </select>
                         </div>
 
@@ -80,33 +84,24 @@
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Donor / Company Name</label>
-                                <input type="text" class="form-control" placeholder="John Doe" required />
+                                <input type="text" class="form-control" name="DonorName" placeholder="John Doe" required />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Email Address</label>
-                                <input type="email" class="form-control" placeholder="donor@example.com" required />
+                                <input type="email" class="form-control" name="Email" placeholder="donor@example.com" required />
                             </div>
                         </div>
 
                         <div class="mb-4">
                             <label class="form-label fw-semibold">Tax / ID Number (Optional)</label>
-                            <input type="text" class="form-control" placeholder="SARS Tax No / ID Number" />
+                            <input type="text" class="form-control" name="TaxIdNumber" placeholder="SARS Tax No / ID Number" />
                         </div>
 
                         <button type="submit" class="btn btn-gotg-gold btn-lg w-100 py-3 shadow">
                             <i class="bi bi-check2-circle me-2"></i> Process Donation & View Tax Certificate
                         </button>
                     </form>
-<div class="mt-4 p-3 border rounded">
-    <h6>Test: Generate Tax Certificate Number</h6>
-    <form method="post">
-        <button type="submit" class="btn btn-outline-secondary">Generate</button>
-    </form>
-    @if (!string.IsNullOrEmpty(Model.GeneratedCertificateNumber))
-    {
-        <p class="mt-2">Generated Certificate Number: @Model.GeneratedCertificateNumber</p>
-    }
-</div>
+                </div>
             </div>
         </div>
     </div>
