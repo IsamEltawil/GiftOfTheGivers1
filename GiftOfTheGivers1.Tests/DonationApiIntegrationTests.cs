@@ -38,5 +38,42 @@ namespace GiftOfTheGivers1.Tests
             var responseBody = await response.Content.ReadAsStringAsync();
             Assert.IsTrue(responseBody.Contains("certificateNumber"), "Response did not contain a certificate number.");
         }
+
+        [TestMethod]
+        public async Task GenerateDonationCertificate_LoadTest_5ConcurrentUsers()
+        {
+            // 1. ARRANGE: Set up the client and payload
+            using var client = new HttpClient();
+            var functionUrl = "http://localhost:7045/api/GenerateDonationCertificate";
+
+            var formData = new
+            {
+                DonorName = "Concurrent Load Test User",
+                Amount = 100.00m,
+                Currency = "ZAR",
+                DonationType = "Monetary"
+            };
+
+            var json = JsonSerializer.Serialize(formData);
+            var tasks = new List<Task<HttpResponseMessage>>();
+
+            // 2. ACT: Loop 5 times and fire the requests simultaneously
+            for (int i = 0; i < 5; i++)
+            {
+                // We must create fresh HTTP content for every single request in the loop
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                tasks.Add(client.PostAsync(functionUrl, content));
+            }
+
+            // Wait for all 5 concurrent "users" to finish their requests
+            var responses = await Task.WhenAll(tasks);
+
+            // 3. ASSERT: Verify that the Azure Function successfully handled the load without crashing
+            foreach (var response in responses)
+            {
+                Assert.IsTrue(response.IsSuccessStatusCode,
+                    $"A request failed under load. Status Code: {response.StatusCode}");
+            }
+        }
     }
 }
