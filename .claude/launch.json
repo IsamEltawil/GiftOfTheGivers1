@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-app",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "GiftOfTheGivers1", "--urls", "http://localhost:5141"],
+      "port": 5141
+    }
+  ]
+}
